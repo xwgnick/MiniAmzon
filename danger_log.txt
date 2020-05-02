@@ -1,0 +1,23 @@
+04/15: When no order exists, there's still place my order button, wchich will cause bugs in our backend
+04/16: Befor show all products in cart, check if the cart is empty.
+
+04/17: when no order exists, the list orders page will show garbage information.
+04/18: Before show all orders, check first. If no order exists, print proper notifications.
+
+4/19: user cannot change his/her delivery location after sign up in our service.
+4/19: Add a function in the buy page where user can change his/her location.
+
+4/19: user cannot change his/her ups usermace after sign up in our service.
+4/19: Add a function in the buy page where user can change his/her usermace.
+
+4/20: user have to buy the product after the products are placed in the cart.
+4/20: add a linke to return to the home page. Add the place order page.
+
+4/21: there's no search page for user to search products.
+4/22: add a search page where user can search for products.
+
+4/22: User cannot change the product counts in the cart.
+4/23: Add an update function in the cart page where users can update their wanted number for the products.
+
+4/24: User cannot remove the products from the cart.
+4/25: Add a function where user can remove items from the cart.

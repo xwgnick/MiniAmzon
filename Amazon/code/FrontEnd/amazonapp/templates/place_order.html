@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  Place {{ user.username }}'s order!
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buy</button>
+  </form>
+  <p><a href="{% url 'home' %}">home</a></p>
+
+{% endblock %}

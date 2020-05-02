@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  db:
+      image: postgres:9.5.20-alpine
+      environment:
+            - POSTGRES_USER=wx50
+            - POSTGRES_PASSWORD=wx50
+            - POSTGRES_DB=wx50db 
+      volumes:
+            - data-volume:/var/lib/postgresql/data
+      ports:
+            - "5432:5432"
+
+  server:
+      build: ./BackEnd
+      user: root
+      command: /BackEnd/run_amazon_backend_server.sh
+      volumes:
+        - ./BackEnd:/BackEnd
+      ports:
+        - "65535:65535"
+        - "65432:65432"
+      depends_on:
+        - db
+    
+  frontend:
+        build: ./FrontEnd
+        user: root
+        command: /FrontEnd/run_frontend.sh
+        volumes:
+          - ./FrontEnd:/FrontEnd
+        expose:
+          - "8080"
+        ports:
+          - "8080:8080"
+          - "587:587"
+        depends_on:
+          - db
+
+
+volumes:
+   data-volume: 

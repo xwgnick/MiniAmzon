@@ -1,0 +1,22 @@
+1. As long as the items are added to the cart,  our back end server would examine the inventory immediately because 
+   the customer shows the intention to buy. If the inventory is not enough, we would send request to world to ask 
+   for more products in this kind . By doing this, we would save the some time in preparation when the customer 
+   officially place his/her orders. 
+
+2. We will add 10 times number of products of its original required quantity because pre-load enough products in the 
+   warehouse would save much time when similar order appears. In our first designing, we asked for purchasing exactly 
+   the amount of products each time the user wants to buy. This will cause the program spend a lot of time to contact
+   the world for more products. In our new design, Roughly, we reduced the time of contacting the world to a small scale.
+
+3. For the user's convience, the users should be able to modify the products they added into their cart. In the minimum 
+   requirements, we are not asked to do that. So, we used a DeleteView module in django, and designed the "remove" function
+   for all the products in users' carts. If they want, they can delete any products they added into their carts.
+
+   We also add a function that allows the users to modify the count of their products in their carts. It is called 
+   "update" in our page. If the user choose to update their products in cart, they can modify the the count of the 
+   products they chose.
+
+4. The front end and back end are totally separated, and only the backend would be able to modify the database, which 
+   make less conflict and make queries and changing much more clear and straightforward. We requires the frontend (django)
+   only has the ability to read from the database. Each time the frontend has the request for modifying the database,
+   the frontend will send a request using our self-defined protocal between the frontend and the backend. 

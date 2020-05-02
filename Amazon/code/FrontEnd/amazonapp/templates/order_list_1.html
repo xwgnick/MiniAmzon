@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{user}}'s Orders</h1>
+{% if order_list.count != 0 %}
+{% for order in order_list %}
+    <h2>Order id: {{order.shipid}}</h2>
+    {% for puchased_product in order.purchasedproduct_set.all %}
+      <h3>prodcut: {{ puchased_product.product_id.product_name }}({{puchased_product.count}})</h3>
+    {% endfor %}
+    <h2>Delivering Location: {{order.x}}, {{order.y}}</h2>
+    <h2>Tracking Number: {{order.shipid}}</h2>
+    <h2>Status: {{order.status}}</h2>
+    <p></p>
+    <p></p>    
+{% endfor %}
+{% else %}
+  <p>Your don't have any orders now! Your are more than welcome to buy anything from our great amazon!</p>
+{% endif %}
+<p><a href="{% url 'home' %}">home</a></p>
+{% endblock %} 
