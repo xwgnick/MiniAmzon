@@ -2,6 +2,9 @@
 
 By Wenge Xie, Yiteng Lu
 
+This is a mini Amazon app that user can use to buy fake things from our amazon site. The backend of the site is connected to a simulated world that is written by the instructors in Duke ECE568 course. We manage all the purchasing, transportation of the goods in the simulated world, and interact with user using a web page written in Django.
+
+
 ## Set Up
 
 First of all, World simulator must be run in the first place. Ensure nothing is running before iniatialize the world. Then start the min-amazon service by running 
@@ -31,3 +34,16 @@ You can view all your orders in "order list". Each other has three statuses. Whe
 turns out to be ordered. When the ups send the truck and load everything up, the status would change to "delivering". When UPS delivers your order, the status would 
 <br>
 finally change to "delivered".
+
+## Workflow (Principle)
+### The "world"
+There is a world simulator we can use for this project. In the "world", as "Amazon", we can buy inventories from this world and also store thoese inventories in some stores that existing in this "world". The world also has control on many other things like the trucks the "UPS" can use, the location where the stroes exists but they are not very important properties for the "Amazon" developers. We contact with the "world" by google buffer protocol.
+
+### "UPS"
+UPS is the transportaion company that Aamazon need to contact with. Each time a user created a order, the Amazon is required to contact the UPS and request a truck for delivering from them. Then UPS should finish the derlivery. The "UPS" part is written by another group of developers. We contact with the UPS by google buffer protocol.
+
+### Database
+We build our database in postgres. There are five tables we created for this project. User, Order, Warehouse, PurchasedProduct and Cart. A "order" is a order the user created after he/she clicked the button "Buy" in the cart page on our web page. All the prodcuts in his order will be stored in to the "Order" table. Meanwhile, we will store his shiping location and ups name too (this is used for intereaction with the UPS). 
+
+### Frontend 
+The frontend of our project is a web page written in Django. This webpage has functions. First, sign in and sign up. Second, search for wanted products. Third, Add prodcuts into the cart. Fourth, adjust the product type and number in hte cart. Fifth, buy things you in the cart. For security concerns, the f
